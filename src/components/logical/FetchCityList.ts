@@ -2,22 +2,13 @@ import { toast } from "react-toastify";
 
 // Fetch cities from GeoNames API
 const fetchCities = async (): Promise<string[]> => {
-  const USERNAME = "rhealnuel";
-  const geoUrl = `http://api.geonames.org/searchJSON?featureClass=P&maxRows=15&orderby=population&username=${USERNAME}`;
-
-  try {
-    const response = await fetch(geoUrl);
-    const data = await response.json();
-
-    if (data.geonames) {
-      return data.geonames.map((city: { name: string }) => city.name);
-    }
-  } catch (error) {
-    console.error("Error fetching cities:", error);
-    toast.error("error fetching city")
-  }
-  return [];
+  return [
+    "Shanghai", "Beijing", "Shenzhen", "Guangzhou", "Kinshasa", "Lagos",
+    "Istanbul", "Chengdu", "Mumbai", "São Paulo", "Mexico City", 
+    "Karachi", "Tianjin", "Delhi", "Wuhan"
+  ];
 };
+
 
 // Save & retrieve from local storage
 const saveToLocalStorage = (key: string, value: any) =>
